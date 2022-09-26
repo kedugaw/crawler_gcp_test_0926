@@ -1,0 +1,5 @@
+# 要從 Git 移除資料夾(不需要上傳到github的資料夾)
+venv
+
+# 要從 Git 移除檔案(不需要上傳到github的檔案)
+*.pyc
