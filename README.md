@@ -23,34 +23,104 @@
     * Settings \ Collaborators \ Manage access \ [Add people]
     * 新增成員 (輸入組員的 GitHub 帳號)
     * 成員記得要去收信，點選信中的連結 You can accept or decline this invitation. ，並且回覆 [Accept invitation]
-  - Collaborators 類似於 Team 模式，repo 的擁有者可以直接新增合作者到自己的倉庫中，讓合作者擁有幾乎等同擁有者的許可權。
 * **每個組員的前置設定**
-  
-## 練習在 GCP Cloud Shell Editor 進行Git, GitHub 多人協作開發 (待改0926)  
-* 前提假設: 組員本機環境為 **Win**
+  * 待補充(0928)
+
+## 練習在 GCP Cloud Shell Editor 進行Git, GitHub 多人協作開發
 * 組員A
-  * 把組員B 的 git repo Clone 回自己的本機
-  * 建立自己的虛擬環境
-  * 初始化開發環境
-    * 安裝套件(pip install -r "requirements.txt")
-    * **新增一支程式 crawler_ptt.py**
-    * 本機執行該程式沒問題後，產出新的一份 requirements.txt(沒有使用到其它套件則不必產生)
-  * 把自己的負責的程式 Push 回組員B 的 git repo
+  * 複製下列網址，並開啟
+  
+  https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/kedugaw/crawler_gcp_test_0926.git&cloudshell_open_in_editor=README.md&cloudshell_workspace=.
+  
+  * 開啟 Terminal > New Terminal
+   ```
+   pwd
+   # 設定在該專案python-finance-trade-test上運行
+   gcloud config set project python-finance-trade-test
+   pwd
+   # 建立虛擬環境
+   virtualenv venv
+   source venv/bin/activate
+   # 準備安裝套件
+   pip list
+   pip install -r "requirements.txt"
+   # 執行程式(確認環境是否OK)
+   python crawler_ptt.py
+   ```
+  * 新增一支程式: **crawler_rate.py**，確認測試沒問題，則準備 push 回 git repo(kedugaw/crawler_gcp_test_0926)
+  ```
+  # 執行程式
+  python crawler_rate.py
+  # 準備把寫好的程式push git repo
+  git status
+  git log
+  git add .
+  git commit -m "add crawley_rate.py"
+  git status
+  git push
+  ```
 * 組員B
-  * 在本機建立虛擬環境
-  * 初始化開發環境
-    * 安裝套件(產出 requirements.txt ， pip freeze > requirements.txt)
-    * 新增檔案 .gitignore 和 README.md
-  * 先把乾淨的環境 Push 上自己的 git repo
-  * 把自己 repo Pull 下來後，**新增一支程式 crawler_static.py**，再 Push 回自己的 repo
+  * 啟用 Cloud Shell -> 開啟編輯器
+  * 開啟 Terminal
+    ```
+    pwd
+    git --version
+    # 將git repo clone 到 GCP cloud shell
+    git clone https://github.com/kedugaw/crawler_gcp_test_0926.git
+    cd crawler_gcp_test_0926
+    # 準備建立虛擬環境
+    virtualenv venv
+    source venv/bin/activate
+    # 準備安裝套件
+    pip list
+    pip install -r "requirements.txt"
+    # 執行程式(確認環境是否OK)
+    python crawler_ptt.py
+    ```
+  * 新增一支程式: **crawler_motc.py**，確認測試沒問題，則準備 push 回自己的 git repo
+    ```
+    # 執行程式
+    python crawler_motc.py
+    # 準備把寫好的程式push git repo
+    git status
+    git log
+    git add .
+    git commit -m "add crawley_motc.py"
+    git status
+    git push
+    ```
 * 組員C,其他組員
-  * 把組員B 的 git repo Clone 回自己的本機
-  * 建立自己的虛擬環境
-  * 初始化開發環境
-    * 安裝套件(pip install -r "requirements.txt")
-    * **新增一支程式 crawler_rate.py**
-    * 本機執行該程式沒問題後，產出新的一份 requirements.txt(沒有使用到其它套件則不必產生)
-  * 把自己的負責的程式 Push 回組員B 的 git repo
+  * 複製下列網址，並開啟
+  
+  https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/kedugaw/crawler_gcp_test_0926.git&cloudshell_open_in_editor=README.md&cloudshell_workspace=.
+  
+  * 開啟 Terminal > New Terminal
+  ```
+  pwd
+  # 設定在該專案python-finance-trade-test上運行
+  gcloud config set project python-finance-trade-test
+  pwd
+  # 建立虛擬環境
+  virtualenv venv
+  source venv/bin/activate
+  # 準備安裝套件
+  pip list
+  pip install -r "requirements.txt"
+  # 執行程式(確認環境是否OK)
+  python crawler_ptt.py
+  ```
+  * 新增一支程式: **crawler_mol.py**，確認測試沒問題，則準備 push 回 git repo(kedugaw/crawler_gcp_test_0926)
+  ```
+  # 執行程式
+  python crawler_mol.py
+  # 準備把寫好的程式push git repo
+  git status
+  git log
+  git add .
+  git commit -m "add crawley_mol.py"
+  git status
+  git push
+  ```
 
 
 ## 練習在 VSCode 進行Git, GitHub 多人協作開發
